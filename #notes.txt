@@ -1,0 +1,279 @@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+JavaScript: Understanding the Weird Parts
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+*************************************************
+Objects and Functions
+*************************************************
+
+Objects and the Dot
+-------------------------------------------------
+computed member access operator: [ ]
+access property using bracket notation
+
+
+Objects and Object Literals
+-------------------------------------------------
+new Object() VS object literal: { }
+
+
+Framework Aside: Faking Namespaces
+-------------------------------------------------
+namespace: container for variables and functions (to keep them unique and separate)
+fake namespace using a container object
+initialize non-existent object properties
+
+
+Functions are Objects
+-------------------------------------------------
+first class function: can be manipulated and treated like any other type/variable
+function === regular object + special props
+function code === function object property
+function code = invocable object property
+function object schema with name & code
+
+
+Function Statements and Function Expressions
+-------------------------------------------------
+expression = code that results in a value
+statement = code that just works: no value
+function statement: doesn't return a value
+function expression = anonymous function
+function expression name = variable name
+the function expression value is a function
+function expression variable is not hoisted
+function expression as function parameter
+
+
+Conceptual Aside: By Value vs By Reference
+-------------------------------------------------
+reference by value diagram: copy of value
+reference by reference diagram
+objects passed to functions by reference
+= equals operator overrides reference !!!
+
+
+Objects, Functions, and 'this'
+-------------------------------------------------
+this depends on how the function is called
+this points to global from inside a function
+this points to object from inside a method
+this points to global inside nested function
+self = this as a workaround for global this
+
+
+Conceptual Aside: Arrays - Collections of Anything
+-------------------------------------------------
+array literal syntax instead of new Array()
+any value types can be mixed inside arrays
+call function from inside array using [ ]( );
+pass array item to function in array [ ] ( [ ] )
+
+
+'arguments' and spread
+-------------------------------------------------
+arguments special keyword inside function
+arguments is array like object not an array
+arguments.length to check # of arguments
+a few seconds ago
+spread operator as function rest argument
+
+
+Framework Aside: Function Overloading
+-------------------------------------------------
+nested functions to pass default params
+
+
+Dangerous Aside: Automatic Semicolon Insertion
+-------------------------------------------------
+return cannot stand alone on line: CRLF = ;
+
+
+Immediately Invoked Functions Expressions (IIFEs)
+-------------------------------------------------
+immediately invoke function w/ parameter
+function statement cannot be anonymous
+function statement to expression: wrap ( )
+
+
+Framework Aside: IIFEs and Safe Code
+-------------------------------------------------
+IIFE have own separate execution context
+pass global/window to IIFE as a parameter
+to intentionally make IIFE variables global
+
+
+Understanding Closures
+-------------------------------------------------
+closure diagram: execution contexts
+functions can always access outer context
+
+
+Understanding Closures - Part 2
+-------------------------------------------------
+closure can only see the final variable state
+parent - children relationship of closures
+free variables === accessible outside scope
+keep every closure variable state using let
+keep variables using IIFE execution context
+IIFE: freezing variable states within closure
+execution context gone but variables kept
+IIFE: pre-calc what function to be returned
+
+
+Framework Aside: Function Factories
+-------------------------------------------------
+every closure call = new execution context
+unique closure execution contexts scheme
+closures for default function parameters
+
+
+Closures and Callbacks
+-------------------------------------------------
+closure setTimeout using closure variable
+callback = to be run after function finished
+
+
+call(), apply(), and bind()
+-------------------------------------------------
+call, apply, bind = methods of any function
+bind makes function copy with custom this
+on the fly right after function expression
+call: invokes the function with custom this
+apply = call but arguments must be array
+function borrowing from a different object
+bind: pass parameters to hard-code them
+function copy with preset parameter value
+bind can overwrite all function parameters
+currying = function w/ preset parameters
+
+
+Functional Programming
+-------------------------------------------------
+provide function to a function as sub-task
+return nested functions for re-usable code
+!bind: preset function overflow parameters
+return nested functions to simplify code
+nested function calls leading to final task
+
+
+
+*************************************************
+Object-Oriented Javascript and Prototypal Inheritance
+*************************************************
+
+Conceptual Aside: Classical vs Prototypal Inheritance
+-------------------------------------------------
+inherit = access props & methods of object
+
+
+Understanding the Prototype
+-------------------------------------------------
+all objects and functions have proto object
+access properties/methods across objects
+indirectly share the same prototype props
+prototype lookup nested across the chain
+this: original object, not prototype method
+
+
+Everything is an Object (or a primitive)
+-------------------------------------------------
+all objects access default prototype props
+functions access default prototype props
+all arrays access default prototype props
+the prototype of prototype: base Object { }
+
+
+Reflection and Extend
+-------------------------------------------------
+reflect = print complete list of object props
+hasOwnProperty: exclude prototype props
+extend: compose multiple objects together
+extend: underscore implementation code
+extend returns a closure function object
+arguments: access unlisted/overflow args
+
+
+
+*************************************************
+Building Objects
+*************************************************
+
+Function Constructors, 'new', and the History of Javascript
+-------------------------------------------------
+class: defines an object but is not an object
+new = create empty object, point this to it
+constructor parameters: dynamic objects
+constructor = function, returns new object
+
+
+Function Constructors and '.prototype'
+-------------------------------------------------
+functions have default prototype prop: { }
+function prototype prop only used by: new
+function.prototype ! == object.__proto__ !!!!
+new: { }.__proto__ = Constructor.prototype
+new: point __proto__ to shared prototype
+prototype mutates globally (by reference)
+share methods in prototype, save memory
+
+
+Conceptual Aside: Built-In Function Constructors
+-------------------------------------------------
+built-in constructors always return objects
+all built-in constructors have a prototype
+primitive value is a property of new object
+strings wrapped in an object automatically
+explore object props & methods using dot
+attach global props to built-in prototypes
+number primitives NOT wrapped in object
+
+
+Dangerous Aside: Built-In Function Constructors
+-------------------------------------------------
+primitive value === object primitive: FALSE
+type conversion using built-in constructors
+
+
+Dangerous Aside: Arrays and for..in
+-------------------------------------------------
+array = object: for ... in lists all object props
+DO NOT USE for ... in to loop through array
+
+
+Object.create and Pure Prototypal Inheritance
+-------------------------------------------------
+Object.create: link any object as prototype
+use a template object instead of prototype
+set props to override the prototype values
+keep all methods in base prototype object
+! unary operator accepts a single argument
+> binary operator accepts two arguments
+: ternary operator takes three arguments
+polyfill adding create to global base Object
+
+
+ES6 and Classes
+-------------------------------------------------
+class is still a plain object within javascript
+extends: set the prototype class of a class
+super: call constructor of that prototype
+
+
+
+*************************************************
+Odds and Ends
+*************************************************
+
+'typeof' , 'instanceof', and Figuring Out What Something Is
+borrow a function to identify typeof: array
+using: Object.prototype.toString.call (array)
+! NOT typeof Object.prototype.toString.call
+other methods: instance of Array | isArray
+instanceof to check if constructor instance
+
+
+Strict Mode
+-------------------------------------------------
+limit strict mode to a single function only
+use strict expands to whole minified script
